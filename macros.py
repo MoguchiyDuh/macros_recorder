@@ -75,8 +75,6 @@ def delete_macro():
         messagebox.showwarning("Warning", "No Marco Selected")
 
 
-11111111
-
 # Global Variables
 macros = load_macros()
 config = load_config()
