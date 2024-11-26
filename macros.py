@@ -1,5 +1,6 @@
 import json
 import tkinter as tk
+import customtkinter as ctk
 from tkinter import messagebox, Listbox
 from pynput import mouse, keyboard as pynput_keyboard
 from pynput.keyboard import Key, KeyCode
@@ -10,14 +11,16 @@ from time import time, sleep
 import pygame
 
 # Config and Macros Storage
-CONFIG_FILE = "config.json"
-MACROS_FILE = "macros.json"
+CONFIG_FILE = "./config.json"
+MACROS_FILE = "./macros.json"
+SOUND_START_FILE = "./assets/sounds/start_stop_sound.mp3"
+SOUND_PLAY_FILE = "./assets/sounds/play_sound.mp3"
 
 pygame.mixer.init()
 
 # Load sounds
-start_stop_sound = pygame.mixer.Sound("./sounds/start_stop_sound.mp3")
-play_macro_sound = pygame.mixer.Sound("./sounds/play_sound.mp3")
+start_stop_sound = pygame.mixer.Sound(SOUND_START_FILE)
+play_macro_sound = pygame.mixer.Sound(SOUND_PLAY_FILE)
 start_stop_sound.set_volume(1)  # default sound volume - 100%
 play_macro_sound.set_volume(1)  # default sound volume - 100%
 sounds_map = {
