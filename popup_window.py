@@ -6,10 +6,6 @@ WINDOW_MIN_SIZE = (250, 130)
 IMAGE_SIZE = (40, 40)
 
 BTN_SIZE = (80, 28)
-BTN_CORNER_RADIUS = 10
-BTN_FONT = ("Roboto", 14)
-
-LABEL_FONT = ("Roboto", 16, "bold")
 
 
 def show_popup_window(title: str, text: str, image_paths: tuple[str, str]):
@@ -31,7 +27,7 @@ def show_popup_window(title: str, text: str, image_paths: tuple[str, str]):
         popup,
         padx=10,
         text=text,
-        font=LABEL_FONT,
+        font=ctk.CTkFont(**ctk.ThemeManager.theme["MacrosFontBold"]),
         image=image,
         compound="left",
         wraplength=300,
@@ -48,8 +44,7 @@ def show_popup_window(title: str, text: str, image_paths: tuple[str, str]):
         frame,
         width=BTN_SIZE[0],
         height=BTN_SIZE[1],
-        corner_radius=BTN_CORNER_RADIUS,
-        font=BTN_FONT,
+        **ctk.ThemeManager.theme["MacrosButtonPopup"],
         text="OK",
         command=popup.destroy,
     )

@@ -1,6 +1,5 @@
 import json
 import tkinter as tk
-import customtkinter as ctk
 from tkinter import messagebox, Listbox
 from pynput import mouse, keyboard as pynput_keyboard
 from pynput.keyboard import Key, KeyCode
@@ -41,7 +40,7 @@ def load_config():
         with open(CONFIG_FILE, "r") as file:
             return json.load(file)
     except FileNotFoundError:
-        return {"start_macro": "ctrl+shift+s", "play_macro": "ctrl+shift+p"}
+        return {"start_hotkey": "ctrl+shift+s", "play_hotkey": "ctrl+shift+p"}
 
 
 def save_config(config):
@@ -286,10 +285,10 @@ current_label.grid(row=0, column=0, columnspan=2)
 start_label = tk.Label(root, text="Start Bind:")
 start_label.grid(row=1, column=0)
 start_entry = tk.Entry(root)
-start_entry.insert(0, config["start_macro"])
+start_entry.insert(0, config["start_hotkey"])
 start_entry.grid(row=1, column=1)
 start_button = tk.Button(
-    root, text="Set", command=lambda: set_bind("start_macro", start_entry.get())
+    root, text="Set", command=lambda: set_bind("start_hotkey", start_entry.get())
 )
 start_button.grid(row=1, column=2)
 
@@ -297,10 +296,10 @@ start_button.grid(row=1, column=2)
 play_label = tk.Label(root, text="Play Bind:")
 play_label.grid(row=2, column=0)
 play_entry = tk.Entry(root)
-play_entry.insert(0, config["play_macro"])
+play_entry.insert(0, config["play_hotkey"])
 play_entry.grid(row=2, column=1)
 play_button = tk.Button(
-    root, text="Set", command=lambda: set_bind("play_macro", play_entry.get())
+    root, text="Set", command=lambda: set_bind("play_hotkey", play_entry.get())
 )
 play_button.grid(row=2, column=2)
 
@@ -333,9 +332,9 @@ def set_bind(action, key_combination):
     config[action] = key_combination
     save_config(config)
     if action == "start_macro":
-        add_hotkey(config["start_macro"], toggle_macro)
-    elif action == "play_macro":
-        add_hotkey(config["play_macro"], lambda: play_macro(selected_macro))
+        add_hotkey(config["start_hotkey"], toggle_macro)
+    elif action == "play_hotkey":
+        add_hotkey(config["play_hotkey"], lambda: play_macro(selected_macro))
     messagebox.showinfo("Info", f"Bind {action} set to: {key_combination}")
     root.focus()
 
@@ -348,9 +347,9 @@ def toggle_macro():
 
 
 # Initialize Hotkeys
-add_hotkey(config["start_macro"], toggle_macro)
+add_hotkey(config["start_hotkey"], toggle_macro)
 add_hotkey(
-    config["play_macro"],
+    config["play_hotkey"],
     lambda: play_macro(selected_macro if "selected_macro" in globals() else None),
 )
 
