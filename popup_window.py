@@ -1,85 +1,137 @@
 import customtkinter as ctk
 from PIL import Image
 
-WINDOW_MIN_SIZE = (250, 130)
 
-IMAGE_SIZE = (40, 40)
+class PopupWindow(ctk.CTkToplevel):
+    def __init__(self, master):
+        super().__init__(master)
 
-BTN_SIZE = (80, 28)
+        self.__WINDOW_SIZE = (300, 150)
+        self.__IMAGE_SIZE = (40, 40)
+        self.__BTN_SIZE = (80, 28)
 
+        self.geometry(f"{self.__WINDOW_SIZE[0]}x{self.__WINDOW_SIZE[1]}")
+        self.resizable(False, False)
 
-def show_popup_window(title: str, text: str, image_paths: tuple[str, str]):
-    popup = ctk.CTkToplevel()
-    popup.title(title)
-    popup.minsize(*WINDOW_MIN_SIZE)
+        self.grid_rowconfigure(0, weight=2)
+        self.grid_rowconfigure(1, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=2)
 
-    popup.grid_rowconfigure(0, weight=2)
-    popup.grid_rowconfigure(1, weight=1)
-    popup.grid_columnconfigure(0, weight=1)
+    def __yes_callback(self, popup, result_var):
+        result_var.set(True)
+        popup.destroy()
 
-    image = ctk.CTkImage(
-        dark_image=Image.open(image_paths[0]),
-        light_image=Image.open(image_paths[1]),
-        size=IMAGE_SIZE,
-    )
+    def __no_callback(self, popup, result_var):
+        result_var.set(False)
+        popup.destroy()
 
-    text_label = ctk.CTkLabel(
-        popup,
-        padx=10,
-        text=text,
-        font=ctk.CTkFont(**ctk.ThemeManager.theme["MacrosFontBold"]),
-        image=image,
-        compound="left",
-        wraplength=300,
-    )
-    text_label.grid(row=0, column=0, padx=10, pady=10)
+    def __show_popup(
+        self,
+        title: str,
+        text: str,
+        image_paths: tuple[str, str],
+        is_yes_no_popup: bool = False,
+    ) -> None | bool:
+        self.title(title)
 
-    frame = ctk.CTkFrame(popup)
-    frame.grid_columnconfigure(0, weight=1)
-    frame.grid_rowconfigure(0, weight=1)
-    frame.grid(row=1, column=0, sticky="nsew")
+        image = ctk.CTkImage(
+            dark_image=Image.open(image_paths[0]),
+            light_image=Image.open(image_paths[1]),
+            size=self.__IMAGE_SIZE,
+        )
 
-    # Create OK button inside the frame
-    ok_button = ctk.CTkButton(
-        frame,
-        width=BTN_SIZE[0],
-        height=BTN_SIZE[1],
-        **ctk.ThemeManager.theme["MacrosButtonPopup"],
-        text="OK",
-        command=popup.destroy,
-    )
-    ok_button.grid(padx=5, pady=5, sticky="e")  # Center button inside the frame
+        image_label = ctk.CTkLabel(
+            self,
+            text="",
+            image=image,
+        )
+        image_label.grid(row=0, column=0, padx=10, pady=(10, 5))
 
-    popup.transient()
-    popup.grab_set()
-    popup.wait_window()
+        text_label = ctk.CTkLabel(
+            self,
+            text=text,
+            wraplength=150,
+        )
+        text_label.grid(row=0, column=1, padx=10, pady=(5, 10))
 
+        frame = ctk.CTkFrame(self)
+        frame.grid_columnconfigure(0, weight=1)
+        frame.grid_rowconfigure(0, weight=1)
+        frame.grid(row=1, column=0, columnspan=2, sticky="nsew")
 
-INFO_DARK_PATH = "./assets/icons/dark/info.png"
-INFO_LIGHT_PATH = "./assets/icons/light/info.png"
+        result_var = ctk.BooleanVar(value=None)
 
+        if is_yes_no_popup:
+            no_button = ctk.CTkButton(
+                frame,
+                width=self.__BTN_SIZE[0],
+                height=self.__BTN_SIZE[1],
+                text="No",
+                command=lambda: self.__no_callback(self, result_var),
+            )
+            no_button.grid(row=0, column=0, padx=5, pady=5)
 
-def show_info_window(text: str):
-    show_popup_window(
-        title="Info", text=text, image_paths=(INFO_DARK_PATH, INFO_LIGHT_PATH)
-    )
+            yes_button = ctk.CTkButton(
+                frame,
+                width=self.__BTN_SIZE[0],
+                height=self.__BTN_SIZE[1],
+                text="Yes",
+                command=lambda: self.__yes_callback(self, result_var),
+            )
+            yes_button.grid(row=0, column=1, padx=5, pady=5)
+        else:
+            ok_button = ctk.CTkButton(
+                frame,
+                width=self.__BTN_SIZE[0],
+                height=self.__BTN_SIZE[1],
+                text="OK",
+                command=self.destroy,
+            )
+            ok_button.grid(padx=5, pady=5, sticky="e")
 
+        self.transient()
+        self.grab_set()
+        self.wait_window()
+        return result_var.get()
 
-WARNING_DARK_PATH = "./assets/icons/dark/warning.png"
-WARNING_LIGHT_PATH = "./assets/icons/light/warning.png"
+    def show_info_window(self, text: str = ""):
+        self.__show_popup(
+            title="Info",
+            text=text,
+            image_paths=(
+                ctk.ThemeManager.theme["MacrosInfoIcon"]["dark"],
+                ctk.ThemeManager.theme["MacrosInfoIcon"]["light"],
+            ),
+        )
 
+    def show_warning_window(self, text: str = ""):
+        self.__show_popup(
+            title="Warning",
+            text=text,
+            image_paths=(
+                ctk.ThemeManager.theme["MacrosWarningIcon"]["dark"],
+                ctk.ThemeManager.theme["MacrosWarningIcon"]["light"],
+            ),
+        )
 
-def show_warning_window(text: str):
-    show_popup_window(
-        title="Warning", text=text, image_paths=(WARNING_DARK_PATH, WARNING_LIGHT_PATH)
-    )
+    def show_error_window(self, text: str = ""):
+        self.__show_popup(
+            title="Error",
+            text=text,
+            image_paths=(
+                ctk.ThemeManager.theme["MacrosErrorIcon"]["dark"],
+                ctk.ThemeManager.theme["MacrosErrorIcon"]["light"],
+            ),
+        )
 
-
-ERROR_DARK_PATH = "./assets/icons/dark/error.png"
-ERROR_LIGHT_PATH = "./assets/icons/light/error.png"
-
-
-def show_error_window(text: str):
-    show_popup_window(
-        title="Error", text=text, image_paths=(ERROR_DARK_PATH, ERROR_LIGHT_PATH)
-    )
+    def show_yes_no_window(self, text: str = "") -> bool:
+        return self.__show_popup(
+            title="Confirm",
+            text=text,
+            image_paths=(
+                ctk.ThemeManager.theme["MacroQuestionIcon"]["dark"],
+                ctk.ThemeManager.theme["MacroQuestionIcon"]["light"],
+            ),
+            is_yes_no_popup=True,
+        )

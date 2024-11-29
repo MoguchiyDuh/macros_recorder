@@ -138,17 +138,17 @@
   "CTkFont": {
     "macOS": {
       "family": "SF Display",
-      "size": 13,
+      "size": 16,
       "weight": "normal"
     },
     "Windows": {
       "family": "Roboto",
-      "size": 13,
+      "size": 16,
       "weight": "normal"
     },
     "Linux": {
       "family": "Roboto",
-      "size": 13,
+      "size": 16,
       "weight": "normal"
     }
   },
@@ -156,29 +156,59 @@
     "light": "./assets/icons/light/icon.ico",
     "dark": "./assets/icons/dark/icon.ico"
   },
+  "MacrosInfoIcon": {
+    "light": "./assets/icons/light/info.png",
+    "dark": "./assets/icons/dark/info.png"
+  },
+  "MacrosWarningIcon": {
+    "light": "./assets/icons/light/warning.png",
+    "dark": "./assets/icons/dark/warning.png"
+  },
+  "MacrosErrorIcon": {
+    "light": "./assets/icons/light/error.png",
+    "dark": "./assets/icons/dark/error.png"
+  },
+  "MacroQuestionIcon": {
+    "light": "./assets/icons/light/question.png",
+    "dark": "./assets/icons/dark/question.png"
+  },
   "MacrosSettingsIcon": {
     "light": "./assets/icons/light/settings.png",
     "dark": "./assets/icons/dark/settings.png"
   },
-  "MacrosButtonToggle": {
-    "corner_radius": 6,
-    "border_width": 0,
-    "fg_color": ["#4CAF50", "#388E3C"],
-    "hover_color": ["#45A049", "#2E7D32"],
-    "border_color": ["#4E5D55", "#97B59E"],
-    "text_color": ["#FFFFFF", "#FFFFFF"],
-    "text_color_disabled": ["#A9D0AC", "#7FA982"]
+  "MacrosSwitchThemeIcon": {
+    "light": "assets/icons/light/dark.png",
+    "dark": "assets/icons/dark/light.png"
   },
-  "MacrosButtonPopup": {
-    "corner_radius": 10,
-    "border_width": 0,
-    "fg_color": ["#3B8ED0", "#1F6AA5"],
-    "hover_color": ["#36719F", "#144870"],
-    "border_color": ["#3E454A", "#949A9F"],
-    "text_color": ["#DCE4EE", "#DCE4EE"],
-    "text_color_disabled": ["gray74", "gray60"]
+  "MacrosBackIcon": {
+    "light": "assets/icons/light/back.png",
+    "dark": "./assets/icons/dark/back.png"
   },
-  "MacrosIconButton": {
+  "MacrosAddIcon": {
+    "light": "assets/icons/light/add.png",
+    "dark": "./assets/icons/dark/add.png"
+  },
+  "MacrosToggleButton": {
+    "start": {
+      "corner_radius": 6,
+      "border_width": 0,
+      "fg_color": ["#4CAF50", "#388E3C"],
+      "hover_color": ["#45A049", "#2E7D32"],
+      "border_color": ["#4E5D55", "#97B59E"],
+      "text_color": ["#FFFFFF", "#FFFFFF"],
+      "text_color_disabled": ["#A9D0AC", "#7FA982"]
+    },
+    "stop": {
+      "corner_radius": 6,
+      "border_width": 0,
+      "fg_color": ["#F44336", "#D32F2F"],
+      "hover_color": ["#E57373", "#C62828"],
+      "border_color": ["#E53935", "#D32F2F"],
+      "text_color": ["#FFFFFF", "#FFFFFF"],
+      "text_color_disabled": ["#FFCDD2", "#F48FB1"]
+    }
+  },
+  "MacrosButtonWithIcon": {
     "corner_radius": 15,
     "border_width": 0,
     "fg_color": ["gray86", "gray17"],
@@ -190,17 +220,17 @@
   "MacrosFontBold": {
     "macOS": {
       "family": "SF Display",
-      "size": 16,
+      "size": 20,
       "weight": "bold"
     },
     "Windows": {
       "family": "Roboto",
-      "size": 16,
+      "size": 20,
       "weight": "bold"
     },
     "Linux": {
       "family": "Roboto",
-      "size": 16,
+      "size": 20,
       "weight": "bold"
     }
   }
