@@ -1,114 +1,81 @@
-import json
 from time import time, sleep
 from threading import Thread, Event
-from typing import Literal
 import win32api
 import win32con
-import pygame
-import os, sys
-
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
+from keyboard import remove_hotkey, add_hotkey
 
 from key_map import KEY_MAP
-
-
-class SoundManager:
-    def __init__(
-        self,
-        start_sound_path: str,
-        stop_sound_path: str,
-        start_recording_sound_path: str,
-        stop_recording_sound_path: str,
-    ):
-        pygame.mixer.init()
-        self.sounds_map = {
-            "start_macro": pygame.mixer.Sound(start_sound_path),
-            "stop_macro": pygame.mixer.Sound(stop_sound_path),
-            "start_recording": pygame.mixer.Sound(start_recording_sound_path),
-            "stop_recording": pygame.mixer.Sound(stop_recording_sound_path),
-        }
-
-    def play_sound(
-        self,
-        sound_name: Literal[
-            "start_macro", "stop_macro", "start_recording", "stop_recording"
-        ],
-        volume: float = 1.0,
-    ):
-        sound = self.sounds_map.get(sound_name, None)
-        if sound is not None:
-            sound.set_volume(volume)
-            pygame.mixer.Sound.play(sound)
-        else:
-            raise KeyError("Sound is not found")
+from config_manager import load_macro_list, update_macro_list
 
 
 class MacroController:
     def __init__(self, update_time=0.01, min_delta_mouse_pos=30):
-        self.recorded_macro = []
-        self.macros_list = {}
-        self.macro_active = False
+        self.recorded_macro_actions = []
+        self.macros_list = load_macro_list()
         self.__stop_trigger = Event()
         self.__update_time = update_time
         self.__min_delta_mouse_pos = min_delta_mouse_pos
 
-        # Loading macros list
-        self.__load_macros_list()
-
-    def __load_macros_list(self):
-        file_name = "macros.json"
-        try:
-            if os.path.exists(file_name):
-                with open(file_name, "r") as file:
-                    self.macros_list = json.load(file)
-            else:
-                print("File is not found")
-                self.macros_list = {}
-                with open(file_name, "w") as file:
-                    json.dump({}, file)
-        except json.JSONDecodeError:
-            self.macros_list = {}
-            print("Couldn't load the macros list")
-
-    def __update_macros_list(self):
-        with open("./macros.json", "w") as file:
-            json.dump(self.macros_list, file)
-
     # Macros DB Functions
-    def add_macro(self, macro_name: str, macro_hotkey: str, active: bool):
-        self.macros_list[macro_name] = {
-            "macro": self.recorded_macro,
-            "hotkey": macro_hotkey,
-            "active": active,
-        }
-        self.__update_macros_list()
-
-    def edit_macro(
+    def add_macro(
         self,
         macro_name: str,
-        new_macro_name: str,
-        macro_hotkey: str | None = None,
-        macro_toggle: bool | None = None,
+        hotkey: str | None = "",
+        active: bool | None = False,
     ):
+        macro = {
+            "name": macro_name,
+            "actions": self.recorded_macro_actions,
+            "hotkey": hotkey,
+            "active": active,
+        }
+        if macro_name not in [macro_name["name"] for macro_name in self.macros_list]:
+            self.macros_list.append(macro)
+            update_macro_list(self.macros_list)
+        else:
+            print(f"Macro with name {macro_name} already exists.")
+
+    def update_macro(
+        self,
+        macro_name: str,
+        new_macro_name: str | None = None,
+        hotkey: str | None = None,
+        is_active: bool | None = None,
+    ):
+        if hotkey is not None:
+            self.macros_list[macro_name]["hotkey"] = hotkey
+        if is_active is not None:
+            self.macros_list[macro_name]["active"] = is_active
         if new_macro_name is not None:
             self.macros_list[new_macro_name] = self.macros_list.pop(macro_name)
-        if macro_hotkey is not None:
-            self.macros_list[macro_name]["hotkey"] = macro_hotkey
-        if macro_toggle == True:
-            self.macros_list[macro_name]["active"] = not self.macros_list[macro_name][
-                "active"
-            ]
-        self.__update_macros_list()
+        update_macro_list(self.macros_list)
 
     def delete_macro(self, macro_name: str):
-        del self.macros_list[macro_name]
-        self.__update_macros_list()
+        if macro_name in self.macros_list:
+            del self.macros_list[macro_name]
+            update_macro_list(self.macros_list)
+        else:
+            print(f"Macro {macro_name} is not found")
+
+    def enable_macro(self, macro_name: str):
+        add_hotkey(hotkey_or_callback=self.macros_list[macro_name]["hotkey"])
+        self.update_macro(is_active=True)
+
+    def disable_macro(self, macro_name: str):
+        remove_hotkey(hotkey_or_callback=self.macros_list[macro_name]["hotkey"])
+        self.update_macro(is_active=False)
+
+    def enable_all(self):
+        for macro in self.macros_list:
+            self.enable_macro(macro["name"])
+
+    def disable_all(self):
+        for macro in self.macros_list:
+            self.disable_macro(macro["name"])
 
     # Macro Recording
     def start_recording(self):
-        self.recorded_macro = []
+        self.recorded_macro_actions = []
         thread = Thread(target=self.__record_macro)
         thread.daemon = True
         thread.start()
@@ -135,7 +102,7 @@ class MacroController:
                         "time": time() - start_time,
                         "key": key,
                     }
-                    self.recorded_macro.append(action_log)
+                    self.recorded_macro_actions.append(action_log)
 
                 # Detect key release
                 elif state >= 0 and key_states[key] == 1:
@@ -146,7 +113,7 @@ class MacroController:
                         "time": time() - start_time,
                         "key": key,
                     }
-                    self.recorded_macro.append(action_log)
+                    self.recorded_macro_actions.append(action_log)
 
                 # Mouse movement detection
                 current_position = win32api.GetCursorPos()
@@ -168,7 +135,7 @@ class MacroController:
                         "time": time() - start_time,
                         "pos": current_position,
                     }
-                    self.recorded_macro.append(action_log)
+                    self.recorded_macro_actions.append(action_log)
 
             sleep(self.__update_time)  # Prevent high CPU usage
 

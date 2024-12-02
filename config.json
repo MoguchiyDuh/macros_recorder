@@ -1,9 +1,1 @@
-{
-    "recording_hotkey": "ctrl+alt+]",
-    "theme": "main",
-    "dark_theme": true,
-    "start_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "stop_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "start_recording_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "stop_recording_sound_path": "./assets/sounds/start_stop_sound.mp3"
-}
+{"recording_hotkey": "ctrl+alt+]", "theme": "light", "lang": "rus"}
