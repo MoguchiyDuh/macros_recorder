@@ -1,9 +1,9 @@
-import keyboard
+from gui import App
 
+WINDOW_SIZE = (500, 400)
 
-def print_hello():
-    print("Hello")
-
-
-keyboard.add_hotkey("[", print_hello)
-keyboard.wait("esc")
+if __name__ == "__main__":
+    app = App(WINDOW_SIZE)
+    app.show_main_page()
+    app.mainloop()
+# TODO: add button, create macro

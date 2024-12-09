@@ -1,0 +1,16 @@
+{
+  "status_enable_button": "Enable",
+  "status_disable_button": "Disable",
+  "delete_button": "Delete",
+  "save_button": "Save",
+  "macro_name_label": "Name:",
+  "hotkey_label": "Hotkey:",
+  "set_button": "Set",
+  "edit_macro_button": "Edit Macro",
+  "loop_switch_label": "Loop Switch:",
+  "select_theme_label": "Theme:",
+  "select_lang_label": "Language:",
+  "not_recording": "Not Recording. \n Press hotkey to record",
+  "recording": "Recording...",
+  "recorded": "Recorded!"
+}

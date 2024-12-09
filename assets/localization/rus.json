@@ -1,0 +1,16 @@
+{
+  "status_enable_button": "ВКЛ",
+  "status_disable_button": "ВЫКЛ",
+  "delete_button": "Удалить",
+  "save_button": "Сохранить",
+  "macro_name_label": "Название:",
+  "hotkey_label": "Соч.клав.:",
+  "set_button": "Задать",
+  "edit_macro_button": "Редактировать",
+  "loop_switch_label": "Повторять:",
+  "select_theme_label": "Тема:",
+  "select_lang_label": "Язык:",
+  "not_recording": "Не записывается. \nНажмите на соч.клав. записи",
+  "recording": "Запись...",
+  "recorded": "Записано!"
+}
