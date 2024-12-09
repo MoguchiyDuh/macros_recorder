@@ -138,17 +138,17 @@
   "CTkFont": {
     "macOS": {
       "family": "SF Display",
-      "size": 16,
+      "size": 18,
       "weight": "normal"
     },
     "Windows": {
       "family": "Roboto",
-      "size": 16,
+      "size": 18,
       "weight": "normal"
     },
     "Linux": {
       "family": "Roboto",
-      "size": 16,
+      "size": 18,
       "weight": "normal"
     }
   },
@@ -159,49 +159,38 @@
     "MacrosErrorIcon": "./assets/icons/dark/error.png",
     "MacroQuestionIcon": "./assets/icons/dark/question.png",
     "MacrosSettingsIcon": "./assets/icons/dark/settings.png",
-    "MacrosSwitchModeIcon": "assets/icons/dark/dark.png",
     "MacrosBackIcon": "./assets/icons/dark/back.png",
     "MacrosAddIcon": "./assets/icons/dark/add.png",
     "DiscordLogoIcon": "./assets/icons/dark/discord_logo.png"
   },
   "MacrosToggleActiveButton": {
     "enable": {
-      "fg_color": "#3B8ED0",
-      "hover_color": "#36719F",
-      "border_color": "#3E454A",
+      "fg_color": "#1F6AA5",
+      "hover_color": "#144870",
       "text_color": "#DCE4EE"
     },
     "disable": {
-      "fg_color": "#A43D3D",
-      "hover_color": "#8C3232",
-      "border_color": "#5E2222",
-      "text_color": "#FFFFFF"
+      "fg_color": "#70369E",
+      "hover_color": "#502670",
+      "text_color": "white"
     }
   },
   "MacrosListButton": {
     "normal": {
       "border_width": 0,
-      "fg_color": "#1F2937",
-      "hover_color": "#2B394D",
-      "border_color": "#949A9F",
-      "selected_color": "#16202D",
-      "text_color": "#AEB4BB"
+      "fg_color": "gray25",
+      "hover_color": "#144870",
+      "border_color": "#949A9F"
     },
     "selected": {
       "border_width": 2,
-      "fg_color": "#1F6AA5",
-      "hover_color": "#1A547D",
-      "border_color": "#144870",
-      "selected_color": "#1F6AA5",
-      "text_color": "#FFFFFF"
+      "border_color": "#1F6AA5"
     }
   },
   "MacrosButtonWithIcon": {
     "corner_radius": 15,
     "fg_color": "gray17",
-    "hover_color": "#144870",
-    "border_color": "#949A9F",
-    "text_color": "#DCE4EE"
+    "hover_color": "#144870"
   },
   "MacrosFontBold": {
     "macOS": {
@@ -221,9 +210,9 @@
     }
   },
   "Sounds": {
-    "start_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "stop_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "start_recording_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "stop_recording_sound_path": "./assets/sounds/start_stop_sound.mp3"
+    "play_macro_sound": "./assets/sounds/play_macro_sound.mp3",
+    "finish_macro_sound": "./assets/sounds/finish_macro_sound.mp3",
+    "start_recording_sound": "./assets/sounds/start_recording_sound.mp3",
+    "stop_recording_sound": "./assets/sounds/stop_recording_sound.mp3"
   }
 }

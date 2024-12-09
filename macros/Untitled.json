@@ -1,0 +1,207 @@
+{
+    "actions": [
+        {
+            "type": "key_press",
+            "time": 0.3409996032714844,
+            "key": "WIN"
+        },
+        {
+            "type": "key_release",
+            "time": 0.4509999752044678,
+            "key": "WIN"
+        },
+        {
+            "type": "key_press",
+            "time": 0.5609984397888184,
+            "key": "C"
+        },
+        {
+            "type": "key_press",
+            "time": 0.6379988193511963,
+            "key": "M"
+        },
+        {
+            "type": "key_release",
+            "time": 0.6709980964660645,
+            "key": "C"
+        },
+        {
+            "type": "key_release",
+            "time": 0.7259984016418457,
+            "key": "M"
+        },
+        {
+            "type": "key_press",
+            "time": 0.7809982299804688,
+            "key": "D"
+        },
+        {
+            "type": "key_press",
+            "time": 0.8689980506896973,
+            "key": "Enter"
+        },
+        {
+            "type": "key_release",
+            "time": 0.8689980506896973,
+            "key": "D"
+        },
+        {
+            "type": "key_release",
+            "time": 0.9789986610412598,
+            "key": "Enter"
+        },
+        {
+            "type": "key_press",
+            "time": 1.9139988422393799,
+            "key": "E"
+        },
+        {
+            "type": "key_release",
+            "time": 2.0019984245300293,
+            "key": "E"
+        },
+        {
+            "type": "key_press",
+            "time": 2.144998550415039,
+            "key": "C"
+        },
+        {
+            "type": "key_press",
+            "time": 2.1889984607696533,
+            "key": "H"
+        },
+        {
+            "type": "key_release",
+            "time": 2.243997812271118,
+            "key": "C"
+        },
+        {
+            "type": "key_press",
+            "time": 2.2769973278045654,
+            "key": "O"
+        },
+        {
+            "type": "key_release",
+            "time": 2.331998109817505,
+            "key": "H"
+        },
+        {
+            "type": "key_release",
+            "time": 2.4089977741241455,
+            "key": "O"
+        },
+        {
+            "type": "key_press",
+            "time": 2.5299999713897705,
+            "key": "Space"
+        },
+        {
+            "type": "key_release",
+            "time": 2.639998435974121,
+            "key": "Space"
+        },
+        {
+            "type": "key_press",
+            "time": 2.705998182296753,
+            "key": "Shift"
+        },
+        {
+            "type": "key_press",
+            "time": 2.815998077392578,
+            "key": "'"
+        },
+        {
+            "type": "key_release",
+            "time": 2.9039978981018066,
+            "key": "Shift"
+        },
+        {
+            "type": "key_release",
+            "time": 2.9039978981018066,
+            "key": "'"
+        },
+        {
+            "type": "key_press",
+            "time": 3.2449982166290283,
+            "key": "H"
+        },
+        {
+            "type": "key_press",
+            "time": 3.277998208999634,
+            "key": "E"
+        },
+        {
+            "type": "key_release",
+            "time": 3.343998670578003,
+            "key": "H"
+        },
+        {
+            "type": "key_release",
+            "time": 3.3549981117248535,
+            "key": "E"
+        },
+        {
+            "type": "key_press",
+            "time": 3.45399808883667,
+            "key": "L"
+        },
+        {
+            "type": "key_release",
+            "time": 3.5309977531433105,
+            "key": "L"
+        },
+        {
+            "type": "key_press",
+            "time": 3.5969982147216797,
+            "key": "L"
+        },
+        {
+            "type": "key_release",
+            "time": 3.651998281478882,
+            "key": "L"
+        },
+        {
+            "type": "key_press",
+            "time": 3.761998414993286,
+            "key": "O"
+        },
+        {
+            "type": "key_release",
+            "time": 3.8499984741210938,
+            "key": "O"
+        },
+        {
+            "type": "key_press",
+            "time": 3.94899845123291,
+            "key": "Shift"
+        },
+        {
+            "type": "key_press",
+            "time": 4.003998279571533,
+            "key": "'"
+        },
+        {
+            "type": "key_release",
+            "time": 4.11400032043457,
+            "key": "Shift"
+        },
+        {
+            "type": "key_release",
+            "time": 4.124999523162842,
+            "key": "'"
+        },
+        {
+            "type": "key_press",
+            "time": 4.2900002002716064,
+            "key": "Enter"
+        },
+        {
+            "type": "key_release",
+            "time": 4.389000177383423,
+            "key": "Enter"
+        }
+    ],
+    "hotkey": "ctrl+alt+1",
+    "is_active": false,
+    "name": "Untitled"
+}

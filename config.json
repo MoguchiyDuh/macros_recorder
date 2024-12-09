@@ -1,1 +1,5 @@
-{"recording_hotkey": "ctrl+alt+]", "theme": "light", "lang": "rus"}
+{
+    "recording_hotkey": "alt+/",
+    "theme": "dark",
+    "lang": "eng"
+}

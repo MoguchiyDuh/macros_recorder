@@ -138,17 +138,17 @@
   "CTkFont": {
     "macOS": {
       "family": "SF Display",
-      "size": 16,
+      "size": 18,
       "weight": "normal"
     },
     "Windows": {
       "family": "Roboto",
-      "size": 16,
+      "size": 18,
       "weight": "normal"
     },
     "Linux": {
       "family": "Roboto",
-      "size": 16,
+      "size": 18,
       "weight": "normal"
     }
   },
@@ -159,7 +159,6 @@
     "MacrosErrorIcon": "./assets/icons/light/error.png",
     "MacroQuestionIcon": "./assets/icons/light/question.png",
     "MacrosSettingsIcon": "./assets/icons/light/settings.png",
-    "MacrosSwitchModeIcon": "assets/icons/light/light.png",
     "MacrosBackIcon": "./assets/icons/light/back.png",
     "MacrosAddIcon": "./assets/icons/light/add.png",
     "DiscordLogoIcon": "./assets/icons/light/discord_logo.png"
@@ -168,40 +167,32 @@
     "enable": {
       "fg_color": "#3B8ED0",
       "hover_color": "#36719F",
-      "border_color": "#3E454A",
       "text_color": "#DCE4EE"
     },
     "disable": {
-      "fg_color": "#A43D3D",
-      "hover_color": "#8C3232",
-      "border_color": "#5E2222",
-      "text_color": "#FFFFFF"
+      "fg_color": "#8A2D2D",
+      "hover_color": "#6F1E1E",
+      "text_color": "white"
     }
   },
   "MacrosListButton": {
     "normal": {
       "border_width": 0,
-      "fg_color": "#2E3B4E",
-      "hover_color": "#3B4D65",
+      "fg_color": "gray78",
+      "hover_color": "#36719F",
       "border_color": "#3E454A",
-      "selected_color": "#1E293B",
-      "text_color": "#DCE4EE"
+      "text_color": "black"
     },
     "selected": {
       "border_width": 2,
-      "fg_color": "#3B8ED0",
-      "hover_color": "#336FA0",
-      "border_color": "#5E85A9",
-      "selected_color": "#3B8ED0",
-      "text_color": "#FFFFFF"
+      "border_color": "#3B8ED0",
+      "text_color": "black"
     }
   },
   "MacrosButtonWithIcon": {
     "corner_radius": 15,
     "fg_color": "gray86",
-    "hover_color": "#36719F",
-    "border_color": "#3E454A",
-    "text_color": "#DCE4EE"
+    "hover_color": "#36719F"
   },
   "MacrosFontBold": {
     "macOS": {

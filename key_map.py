@@ -1,7 +1,7 @@
 import win32con
 
 KEY_MAP = {
-    # Mouse buttons
+    # Mouse keys
     "LMB": win32con.VK_LBUTTON,
     "RMB": win32con.VK_RBUTTON,
     "MMB": win32con.VK_MBUTTON,
@@ -56,3 +56,31 @@ KEY_MAP = {
 
 for char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890":
     KEY_MAP[char] = ord(char)
+
+MOUSE_MAP = {
+    # Mouse buttons
+    "LMB": {
+        "down": win32con.MOUSEEVENTF_LEFTDOWN,
+        "up": win32con.MOUSEEVENTF_LEFTUP,
+        "flag": 0,
+    },
+    "RMB": {
+        "down": win32con.MOUSEEVENTF_RIGHTDOWN,
+        "up": win32con.MOUSEEVENTF_RIGHTUP,
+        "flag": 0,
+    },
+    "MMB": {
+        "down": win32con.MOUSEEVENTF_MIDDLEDOWN,
+        "up": win32con.MOUSEEVENTF_MIDDLEUP,
+    },
+    "MB4": {
+        "down": win32con.MOUSEEVENTF_XDOWN,
+        "up": win32con.MOUSEEVENTF_XUP,
+        "flag": win32con.VK_XBUTTON1,
+    },
+    "MB5": {
+        "down": win32con.MOUSEEVENTF_XDOWN,
+        "up": win32con.MOUSEEVENTF_XUP,
+        "flag": win32con.VK_XBUTTON2,
+    },
+}

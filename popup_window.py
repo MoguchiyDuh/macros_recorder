@@ -30,14 +30,14 @@ class PopupWindow(ctk.CTkToplevel):
         self,
         title: str,
         text: str,
-        image_paths: tuple[str, str],
+        image_path: str,
         is_yes_no_popup: bool = False,
     ) -> None | bool:
         self.title(title)
 
         image = ctk.CTkImage(
-            dark_image=Image.open(image_paths[0]),
-            light_image=Image.open(image_paths[1]),
+            light_image=Image.open(image_path),
+            dark_image=Image.open(image_path),
             size=self.__IMAGE_SIZE,
         )
 
@@ -99,39 +99,27 @@ class PopupWindow(ctk.CTkToplevel):
         self.__show_popup(
             title="Info",
             text=text,
-            image_paths=(
-                ctk.ThemeManager.theme["MacrosInfoIcon"]["dark"],
-                ctk.ThemeManager.theme["MacrosInfoIcon"]["light"],
-            ),
+            image_path=ctk.ThemeManager.theme["Icons"]["MacrosInfoIcon"],
         )
 
     def show_warning_window(self, text: str = ""):
         self.__show_popup(
             title="Warning",
             text=text,
-            image_paths=(
-                ctk.ThemeManager.theme["MacrosWarningIcon"]["dark"],
-                ctk.ThemeManager.theme["MacrosWarningIcon"]["light"],
-            ),
+            image_path=ctk.ThemeManager.theme["Icons"]["MacrosWarningIcon"],
         )
 
     def show_error_window(self, text: str = ""):
         self.__show_popup(
             title="Error",
             text=text,
-            image_paths=(
-                ctk.ThemeManager.theme["MacrosErrorIcon"]["dark"],
-                ctk.ThemeManager.theme["MacrosErrorIcon"]["light"],
-            ),
+            image_path=ctk.ThemeManager.theme["Icons"]["MacrosErrorIcon"],
         )
 
     def show_yes_no_window(self, text: str = "") -> bool:
         return self.__show_popup(
             title="Confirm",
             text=text,
-            image_paths=(
-                ctk.ThemeManager.theme["MacroQuestionIcon"]["dark"],
-                ctk.ThemeManager.theme["MacroQuestionIcon"]["light"],
-            ),
+            image_path=ctk.ThemeManager.theme["Icons"]["MacroQuestionIcon"],
             is_yes_no_popup=True,
         )
