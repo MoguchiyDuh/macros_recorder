@@ -212,9 +212,9 @@
     }
   },
   "Sounds": {
-    "start_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "stop_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "start_recording_sound_path": "./assets/sounds/start_stop_sound.mp3",
-    "stop_recording_sound_path": "./assets/sounds/start_stop_sound.mp3"
+    "start_sound_path": "./assets/sounds/start_stop_sound.wav",
+    "stop_sound_path": "./assets/sounds/start_stop_sound.wav",
+    "start_recording_sound_path": "./assets/sounds/start_stop_sound.wav",
+    "stop_recording_sound_path": "./assets/sounds/start_stop_sound.wav"
   }
 }

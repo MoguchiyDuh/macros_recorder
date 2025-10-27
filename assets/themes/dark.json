@@ -210,9 +210,9 @@
     }
   },
   "Sounds": {
-    "play_macro_sound": "./assets/sounds/play_macro_sound.mp3",
-    "finish_macro_sound": "./assets/sounds/finish_macro_sound.mp3",
-    "start_recording_sound": "./assets/sounds/start_recording_sound.mp3",
-    "stop_recording_sound": "./assets/sounds/stop_recording_sound.mp3"
+    "play_macro_sound": "./assets/sounds/play_macro_sound.wav",
+    "finish_macro_sound": "./assets/sounds/finish_macro_sound.wav",
+    "start_recording_sound": "./assets/sounds/start_recording_sound.wav",
+    "stop_recording_sound": "./assets/sounds/stop_recording_sound.wav"
   }
 }
