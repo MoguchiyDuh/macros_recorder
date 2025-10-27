@@ -18,7 +18,7 @@
   <pre><code>git clone https://github.com/your-username/macros-recorder.git</code></pre>
   
   <li>Install the required dependencies:</li>
-  <pre><code>pip install -r req.txt</code></pre>
+  <pre><code>pip install -r requirements.txt</code></pre>
 
   <li>Run the application:</li>
   <pre><code>python main.py</code></pre>
@@ -35,9 +35,3 @@
     <li><strong>Save Macro:</strong> Save your macro to a file for later use.</li>
     <li><strong>Load Macro:</strong> Load a previously saved macro.</li>
 </ul>
-
-<h2>License</h2>
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
-
-<h2>Support</h2>
-<p>If you need help or have questions, feel free to open an issue on GitHub or reach out to the project's community.(and hope someone answers to you)</p>
